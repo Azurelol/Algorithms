@@ -148,9 +148,12 @@
   <ItemGroup>
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Sort.cpp" />
+    <ClCompile Include="Strings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sort.h" />
+    <ClInclude Include="Strings.h" />
+    <ClInclude Include="Trace.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
