@@ -97,12 +97,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -146,11 +147,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cipher.cpp" />
+    <ClCompile Include="Counting.cpp" />
     <ClCompile Include="Driver.cpp" />
+    <ClCompile Include="NumberTheory.cpp" />
+    <ClCompile Include="Precompiled.cpp" />
     <ClCompile Include="Sort.cpp" />
     <ClCompile Include="Strings.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Algorithms.h" />
+    <ClInclude Include="BruteForce.h" />
+    <ClInclude Include="Cipher.h" />
+    <ClInclude Include="Counting.h" />
+    <ClInclude Include="NumberTheory.h" />
+    <ClInclude Include="Precompiled.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="Strings.h" />
     <ClInclude Include="Trace.h" />

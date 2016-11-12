@@ -1,3 +1,4 @@
+#include "Precompiled.h"
 #include "Strings.h"
 
 namespace Algorithms {
@@ -170,8 +171,11 @@ namespace Algorithms {
       return 0;
 
     if (algorithm == OccurrencesAlgorithm::STDCount) {
-      return std::count(string.begin(), string.end(), character);
+      
+      return static_cast<int>(std::count(string.begin(), string.end(), character));
     }
+
+    throw new std::exception("No string given!");
 
   }
 

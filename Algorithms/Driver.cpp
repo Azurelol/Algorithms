@@ -3,14 +3,18 @@
 @file      Driver.cpp
 @author    Christian Sagel
 @par       email: ckpsm\@live.com
-@date      9/29/2016
+@date      11/12/2016
 @brief     Main driver for my Algorithms demonstration.
-@note      Hours spent: 3
+@note      Hours spent: 7
 */
 /******************************************************************************/
+// Function pointers, ho!
+#include <functional>
+
 // Algorithms
-#include "Sort.h"
-#include "Strings.h"
+#include "Algorithms.h"
+using namespace Algorithms;
+
 
 void Test(bool result, std::string success, std::string failure) {
   if (result) 
@@ -25,6 +29,23 @@ void PrintIsA(bool result, std::string subject, std::string identity) {
     Trace(subject + " is " + identity);
   else
     Trace(subject + " is not " + identity);
+}
+
+template <typename Array>
+void Print(Array array) {
+  std::cout << "{";
+  for (auto& element : array) {
+    std::cout << element << " ";
+  }
+  std::cout << "}\n";
+}
+
+void PrintSort(const std::vector<int>& unsorted, const std::vector<int>& sorted, std::string message) {
+  Trace("Sorting algorithm = " + message);
+  std::cout << "Unsorted: ";
+  Print(unsorted);
+  std::cout << "Sorted: ";
+  Print(sorted);
 }
 
 void TestStrings() {
@@ -63,15 +84,70 @@ void TestStrings() {
   std::string parent = "Megaboss", child = "boss";
   PrintIsA(Algorithms::String::Substring(parent, child), child, " a substring of '" + parent + "'");
 
+}
 
+void TestSort(std::function<void(std::vector<int>)> sortFunc, std::string funcName, const std::vector<int>& array) {
+  auto copy = array;
+  sortFunc(copy);
+  PrintSort(array, copy, funcName);
+}
 
+void TestSorting() {
+
+  // 1. Simple sorting of integers
+  std::vector<int> integersSmall{ 7, 8, 18, 4, 5, 9, 14, 3 };
+  Sorting::BubbleSort(integersSmall);
+  TestSort(Sorting::BubbleSort, "Bubble sort", integersSmall);
+  TestSort(Sorting::SelectionSort, "Selection Sort", integersSmall);
+}
+
+void TestCipher() {
+  std::string encodedMessage = "DOFKVFVBSPRLNHTLZ";
+
+  Trace("1. Shift Cipher: Decoding '" + encodedMessage + "'. Possible values:");
+  for (unsigned i = 0; i < Cipher::PossibleShiftValues; ++i) {
+    Trace("Shift value = " << i << ", decoded message = " << Cipher::Shift(encodedMessage, i));
+  }
+}
+
+void CombinationsOf(int n, int k) {
+  Trace("Combinations of " << n << " and " << k << " = " << Counting::Combinations(n, k));
+}
+
+void DifferentOutcomesOf(int n, int k) {
+  //Trace("Different outcome " << n << " and " << k << " = " << Counting::Combinations(n, k));/
+}
+
+int DifferentOutcomesAtLeast(int outcomes, int occurrences) {
+  int diffOutcomes = outcomes;
+  // Subtract the possiblity of the opposite
+  for (int i = 0; i < occurrences; ++i)
+    diffOutcomes -= Counting::Combinations(outcomes, i);
+  return diffOutcomes;
+}
+
+int DifferentOutcomesAtMost(int outcomes, int rolls, int occurrences) {
+  int diffOutcomes = outcomes;
+  // Subtract the possiblity of more than times
+  for (int i = rolls; i > occurrences; --i)
+    diffOutcomes -= Counting::Combinations(outcomes, i);
+  return diffOutcomes;
 }
 
 int main(void) {
 
-  TestStrings();
-
+  //TestStrings();
+  //TestSorting();
+  //TestCipher();
   
+  CombinationsOf(10, 2);
+
+  int coinFlips = 10, possibilities = 2;
+  int differentOutcomes = Counting::Permutations(2, 10);
+  int differentOutcomesLeast2Heads = DifferentOutcomesAtLeast(differentOutcomes, 2);
+  int differentOutcomesatMost6Heads = DifferentOutcomesAtMost(differentOutcomes, coinFlips, 6);
+  
+
 
   Trace("Press any key to exit...");
   std::cin.get();
