@@ -188,7 +188,11 @@ namespace Algorithms {
       return false;
 
     if (algorithm == SubstringAlgorithm::Iterative) {
-          
+      int j = 0;
+      for (int i = 0; i < string.length() && j < substring.length(); i++) {
+        if (string[j] == substring[i])
+          j++;
+      }
     }
     else if (algorithm == SubstringAlgorithm::STDFind) {
       return (string.find(substring) != std::string::npos);
