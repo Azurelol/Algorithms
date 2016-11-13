@@ -65,5 +65,11 @@
     <ClInclude Include="BruteForce.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CountingProblems.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Problems.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

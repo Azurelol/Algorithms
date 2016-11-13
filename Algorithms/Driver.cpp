@@ -118,11 +118,11 @@ void DifferentOutcomesOf(int n, int k) {
   //Trace("Different outcome " << n << " and " << k << " = " << Counting::Combinations(n, k));/
 }
 
-int DifferentOutcomesAtLeast(int outcomes, int occurrences) {
+int DifferentOutcomesAtLeast(int outcomes, int rolls, int occurrences) {
   int diffOutcomes = outcomes;
   // Subtract the possiblity of the opposite
   for (int i = 0; i < occurrences; ++i)
-    diffOutcomes -= Counting::Combinations(outcomes, i);
+    diffOutcomes -= Counting::Combinations(rolls, i);
   return diffOutcomes;
 }
 
@@ -130,7 +130,7 @@ int DifferentOutcomesAtMost(int outcomes, int rolls, int occurrences) {
   int diffOutcomes = outcomes;
   // Subtract the possiblity of more than times
   for (int i = rolls; i > occurrences; --i)
-    diffOutcomes -= Counting::Combinations(outcomes, i);
+    diffOutcomes -= Counting::Combinations(rolls, i);
   return diffOutcomes;
 }
 
@@ -144,9 +144,19 @@ int main(void) {
 
   int coinFlips = 10, possibilities = 2;
   int differentOutcomes = Counting::Permutations(2, 10);
-  int differentOutcomesLeast2Heads = DifferentOutcomesAtLeast(differentOutcomes, 2);
+  int differentOutcomesLeast2Heads = DifferentOutcomesAtLeast(differentOutcomes, coinFlips, 2);
   int differentOutcomesatMost6Heads = DifferentOutcomesAtMost(differentOutcomes, coinFlips, 6);
   
+  // Among 52 peolpe, at least how many were born in the same month
+  int people = 52, months = 12;
+  int bornInSameMonthAtLeast = static_cast<int>(std::ceilf(static_cast<float>(people) / static_cast<float>(months)));
+  // Assuming that no one is born on Feb. 29 (leap day), how many people should be selected to guarantee that at least
+  // 6 were born on the same day, not considering the year?
+  int peopleSelectedAtLeast6BornOnSameDay = (5 * 365) + 1;
+  
+  // A standard deck of cards consists of four suits (clubs, diamonds, hearts, and spades), with each suit containing 13 cards 
+  // (ace, two through ten, jack, queen, and king) for a total of 52 cards in all. 
+  int cards = 52;
 
 
   Trace("Press any key to exit...");

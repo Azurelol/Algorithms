@@ -160,8 +160,10 @@
     <ClInclude Include="BruteForce.h" />
     <ClInclude Include="Cipher.h" />
     <ClInclude Include="Counting.h" />
+    <ClInclude Include="CountingProblems.h" />
     <ClInclude Include="NumberTheory.h" />
     <ClInclude Include="Precompiled.h" />
+    <ClInclude Include="Problems.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="Strings.h" />
     <ClInclude Include="Trace.h" />
