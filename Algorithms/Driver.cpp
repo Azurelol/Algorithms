@@ -14,6 +14,9 @@
 // Algorithms
 #include "Algorithms.h"
 using namespace Algorithms;
+// Problems
+#include "Problems.h"
+using namespace Problems;
 
 
 void Test(bool result, std::string success, std::string failure) {
@@ -114,24 +117,13 @@ void CombinationsOf(int n, int k) {
   Trace("Combinations of " << n << " and " << k << " = " << Counting::Combinations(n, k));
 }
 
-void DifferentOutcomesOf(int n, int k) {
-  //Trace("Different outcome " << n << " and " << k << " = " << Counting::Combinations(n, k));/
-}
+intmax_t Factorial(int n) {
 
-int DifferentOutcomesAtLeast(int outcomes, int rolls, int occurrences) {
-  int diffOutcomes = outcomes;
-  // Subtract the possiblity of the opposite
-  for (int i = 0; i < occurrences; ++i)
-    diffOutcomes -= Counting::Combinations(rolls, i);
-  return diffOutcomes;
-}
+  intmax_t factorial = 1;
+  for (int i = 1; i <= n; ++i)
+    factorial = factorial * i;
 
-int DifferentOutcomesAtMost(int outcomes, int rolls, int occurrences) {
-  int diffOutcomes = outcomes;
-  // Subtract the possiblity of more than times
-  for (int i = rolls; i > occurrences; --i)
-    diffOutcomes -= Counting::Combinations(rolls, i);
-  return diffOutcomes;
+  return factorial;
 }
 
 int main(void) {
@@ -140,26 +132,39 @@ int main(void) {
   //TestSorting();
   //TestCipher();
   
-  CombinationsOf(10, 2);
+  //auto hoho = Factorial(52);
 
-  int coinFlips = 10, possibilities = 2;
-  int differentOutcomes = Counting::Permutations(2, 10);
-  int differentOutcomesLeast2Heads = DifferentOutcomesAtLeast(differentOutcomes, coinFlips, 2);
-  int differentOutcomesatMost6Heads = DifferentOutcomesAtMost(differentOutcomes, coinFlips, 6);
-  
-  // Among 52 peolpe, at least how many were born in the same month
-  int people = 52, months = 12;
-  int bornInSameMonthAtLeast = static_cast<int>(std::ceilf(static_cast<float>(people) / static_cast<float>(months)));
-  // Assuming that no one is born on Feb. 29 (leap day), how many people should be selected to guarantee that at least
-  // 6 were born on the same day, not considering the year?
-  int peopleSelectedAtLeast6BornOnSameDay = (5 * 365) + 1;
-  
   // A standard deck of cards consists of four suits (clubs, diamonds, hearts, and spades), with each suit containing 13 cards 
   // (ace, two through ten, jack, queen, and king) for a total of 52 cards in all. 
-  int cards = 52;
+  //int cards = 52, suit = 13;
+  //int cardsThatAreJackorHeart = Counting::Combinations(cards, 4) + Counting::Combinations(cards, 4);
 
-
+  // The CEO of a company has a table in his office which can seat 4 employees. 
+  // How many seating arrangements are possible if 4 out the 12 employees sit at the table? 
+  int seatingArrangements = Counting::Factorial(12) / Counting::Factorial(8);
   Trace("Press any key to exit...");
+
+  // A company received a shipment of 33 laser printers, including 5 that are defective. 
+  // 3 of these printers are selected to be used in the copy room. 
+  // (a) How many selections can be made?
+  //int selectionsMade = Counting::Combinations(33, 3);
+  //// (b) How many of these selections will contain no defective printers? 
+  //int selectionsWithoutDefectivePrinters = Counting::Combinations(28, 3);
+
+  // You are a participant in a peace conference with 10 participants. Everybody shakes everybody else's hand. 
+  // There are handshakes altogether. 
+  int participants = 10, handshakes = 0; 
+  for (int i = 1; i < participants; ++i)
+    handshakes += i;
+
+  // A school dance committee is to consist of 2 freshmen, 3 sophomores, 4 juniors, and 5 seniors. 
+  // If 6 freshmen, 7 sophomores, 8 juniors, and 9 seniors are eligible to be on the committee, in how many ways can the committee be chosen? 
+  int fr = 6, so = 7, jr = 8, sr = 9;
+  int students = fr + so + jr + sr;
+  int committeeVariations = Counting::Combinations(fr, 2) * Counting::Combinations(so, 3) 
+                          * Counting::Combinations(jr, 4) * Counting::Combinations(sr, 5);
+
+
   std::cin.get();
 
 }
