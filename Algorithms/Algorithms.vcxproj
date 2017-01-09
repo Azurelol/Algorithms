@@ -154,8 +154,9 @@
     <ClCompile Include="Cipher.cpp" />
     <ClCompile Include="Counting.cpp" />
     <ClCompile Include="Driver.cpp" />
+    <ClCompile Include="Graphs.cpp" />
     <ClCompile Include="NumberTheory.cpp" />
-    <ClCompile Include="Precompiled.cpp" />
+    <ClCompile Include="Probability.cpp" />
     <ClCompile Include="Sort.cpp" />
     <ClCompile Include="Strings.cpp" />
   </ItemGroup>
@@ -165,8 +166,9 @@
     <ClInclude Include="Cipher.h" />
     <ClInclude Include="Counting.h" />
     <ClInclude Include="CountingProblems.h" />
+    <ClInclude Include="Graphs.h" />
     <ClInclude Include="NumberTheory.h" />
-    <ClInclude Include="Precompiled.h" />
+    <ClInclude Include="Probability.h" />
     <ClInclude Include="Problems.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="Strings.h" />
