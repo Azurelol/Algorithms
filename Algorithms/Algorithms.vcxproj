@@ -75,7 +75,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(LibraryPath)</LibraryPath>
-    <IncludePath>G:\Repositories\Algorithms\Algorithms\Libraries;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\Libraries;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -83,7 +83,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <LibraryPath>$(LibraryPath)</LibraryPath>
-    <IncludePath>G:\Repositories\Algorithms\Algorithms\Libraries;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\Libraries;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -151,28 +151,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Cipher.cpp" />
-    <ClCompile Include="Counting.cpp" />
+    <ClCompile Include="Algorithms\Cipher.cpp" />
+    <ClCompile Include="Algorithms\Counting.cpp" />
+    <ClCompile Include="Algorithms\Graphs_AdjacencyList.cpp" />
+    <ClCompile Include="Algorithms\Graphs_AdjacencyMatrix.cpp" />
     <ClCompile Include="Driver.cpp" />
-    <ClCompile Include="Graphs.cpp" />
-    <ClCompile Include="NumberTheory.cpp" />
-    <ClCompile Include="Probability.cpp" />
-    <ClCompile Include="Sort.cpp" />
-    <ClCompile Include="Strings.cpp" />
+    <ClCompile Include="Algorithms\Graphs.cpp" />
+    <ClCompile Include="Algorithms\NumberTheory.cpp" />
+    <ClCompile Include="Algorithms\Probability.cpp" />
+    <ClCompile Include="Algorithms\Sort.cpp" />
+    <ClCompile Include="Algorithms\Strings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algorithms.h" />
-    <ClInclude Include="BruteForce.h" />
-    <ClInclude Include="Cipher.h" />
-    <ClInclude Include="Counting.h" />
-    <ClInclude Include="CountingProblems.h" />
-    <ClInclude Include="Graphs.h" />
-    <ClInclude Include="NumberTheory.h" />
-    <ClInclude Include="Probability.h" />
-    <ClInclude Include="Problems.h" />
-    <ClInclude Include="Sort.h" />
-    <ClInclude Include="Strings.h" />
-    <ClInclude Include="Trace.h" />
+    <ClInclude Include="Algorithms\Cipher.h" />
+    <ClInclude Include="Algorithms\Counting.h" />
+    <ClInclude Include="Algorithms\Graphs.h" />
+    <ClInclude Include="Algorithms\NumberTheory.h" />
+    <ClInclude Include="Algorithms\Probability.h" />
+    <ClInclude Include="Algorithms\Sort.h" />
+    <ClInclude Include="Algorithms\Strings.h" />
+    <ClInclude Include="Libraries\Trace.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

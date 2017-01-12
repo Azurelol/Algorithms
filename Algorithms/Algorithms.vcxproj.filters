@@ -18,63 +18,60 @@
     <ClCompile Include="Driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sort.cpp">
+    <ClCompile Include="Algorithms\Cipher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Strings.cpp">
+    <ClCompile Include="Algorithms\Counting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NumberTheory.cpp">
+    <ClCompile Include="Algorithms\Graphs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Counting.cpp">
+    <ClCompile Include="Algorithms\Probability.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cipher.cpp">
+    <ClCompile Include="Algorithms\Sort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Probability.cpp">
+    <ClCompile Include="Algorithms\Strings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Graphs.cpp">
+    <ClCompile Include="Algorithms\NumberTheory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Graphs_AdjacencyMatrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Graphs_AdjacencyList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sort.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Strings.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Trace.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cipher.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Counting.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Algorithms.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NumberTheory.h">
+    <ClInclude Include="Algorithms\Cipher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BruteForce.h">
+    <ClInclude Include="Algorithms\Counting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CountingProblems.h">
+    <ClInclude Include="Algorithms\Graphs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Problems.h">
+    <ClInclude Include="Algorithms\Probability.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Probability.h">
+    <ClInclude Include="Algorithms\Sort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Graphs.h">
+    <ClInclude Include="Algorithms\Strings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms\NumberTheory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\Trace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

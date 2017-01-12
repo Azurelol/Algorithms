@@ -1,8 +1,7 @@
 #pragma once
 
-#include "Counting.h"
-#include "Cipher.h"
-#include "Sort.h"
-#include "Strings.h"
-#include "NumberTheory.h"
-#include "BruteForce.h"
+#include "Algorithms\Counting.h"
+#include "Algorithms\Cipher.h"
+#include "Algorithms\Sort.h"
+#include "Algorithms\Strings.h"
+#include "Algorithms\NumberTheory.h"

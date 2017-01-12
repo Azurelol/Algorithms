@@ -1,4 +1,3 @@
-#include "Precompiled.h"
 #include "Strings.h"
 
 namespace Algorithms {
