@@ -1,4 +1,5 @@
-#include "Graphs.h"
+#include "Graph.h"
+
 
 namespace Algorithms
 {

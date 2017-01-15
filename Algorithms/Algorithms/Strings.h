@@ -14,14 +14,16 @@
 #include <map>
 
 // Tracing
-#include "Trace.h"
 
-namespace Algorithms {
 
-  class String {
+namespace Algorithms
+{
+
+  class String
+  {
 
   public:
-    
+
     // Determines if a string has all unique characters
     static bool Unique(const std::string& string);
 
@@ -37,7 +39,7 @@ namespace Algorithms {
     enum class PalindromeAlgorithm { CompareHalves, CompareHalvesEqual, Reverse };
     // Checks if a string is a palindrome
     static bool Palindrome(const std::string& string, PalindromeAlgorithm algorithm = PalindromeAlgorithm::CompareHalvesEqual);
-    
+
     enum class PrintDuplicatesAlgorithm { CharArray, Map };
     // Prints the occurrence of duplicates in a string
     static void PrintDuplicates(const std::string& string, PrintDuplicatesAlgorithm algorithm = PrintDuplicatesAlgorithm::Map);

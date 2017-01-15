@@ -153,25 +153,32 @@
   <ItemGroup>
     <ClCompile Include="Algorithms\Cipher.cpp" />
     <ClCompile Include="Algorithms\Counting.cpp" />
-    <ClCompile Include="Algorithms\Graphs_AdjacencyList.cpp" />
-    <ClCompile Include="Algorithms\Graphs_AdjacencyMatrix.cpp" />
+    <ClCompile Include="Algorithms\Graph_AdjacencyList.cpp" />
+    <ClCompile Include="Algorithms\Graph_AdjacencyMatrix.cpp" />
+    <ClCompile Include="Algorithms\Graph_EdgeList.cpp" />
     <ClCompile Include="Driver.cpp" />
-    <ClCompile Include="Algorithms\Graphs.cpp" />
+    <ClCompile Include="Algorithms\Graph.cpp" />
     <ClCompile Include="Algorithms\NumberTheory.cpp" />
     <ClCompile Include="Algorithms\Probability.cpp" />
-    <ClCompile Include="Algorithms\Sort.cpp" />
+    <ClCompile Include="Algorithms\Sorting.cpp" />
     <ClCompile Include="Algorithms\Strings.cpp" />
+    <ClCompile Include="Libraries\AzureUtilities.cpp" />
+    <ClCompile Include="Tests\StringTests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Algorithms.h" />
+    <ClInclude Include="AlgorithmsInclude.h" />
     <ClInclude Include="Algorithms\Cipher.h" />
     <ClInclude Include="Algorithms\Counting.h" />
+    <ClInclude Include="Algorithms\Graph.h" />
     <ClInclude Include="Algorithms\Graphs.h" />
     <ClInclude Include="Algorithms\NumberTheory.h" />
     <ClInclude Include="Algorithms\Probability.h" />
-    <ClInclude Include="Algorithms\Sort.h" />
+    <ClInclude Include="Algorithms\Sorting.h" />
     <ClInclude Include="Algorithms\Strings.h" />
-    <ClInclude Include="Libraries\Trace.h" />
+    <ClInclude Include="Libraries\AzureUtilities.h" />
+    <ClInclude Include="Tests\SortingTests.h" />
+    <ClInclude Include="TestsInclude.h" />
+    <ClInclude Include="Tests\StringTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

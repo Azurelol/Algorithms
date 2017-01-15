@@ -24,13 +24,7 @@
     <ClCompile Include="Algorithms\Counting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Algorithms\Graphs.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Algorithms\Probability.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Algorithms\Sort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Algorithms\Strings.cpp">
@@ -39,30 +33,36 @@
     <ClCompile Include="Algorithms\NumberTheory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Algorithms\Graphs_AdjacencyMatrix.cpp">
+    <ClCompile Include="Algorithms\Graph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Algorithms\Graphs_AdjacencyList.cpp">
+    <ClCompile Include="Algorithms\Graph_EdgeList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Graph_AdjacencyList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Graph_AdjacencyMatrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Sorting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\AzureUtilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\StringTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Algorithms.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Algorithms\Cipher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Algorithms\Counting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Algorithms\Graphs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Algorithms\Probability.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Algorithms\Sort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Algorithms\Strings.h">
@@ -71,7 +71,28 @@
     <ClInclude Include="Algorithms\NumberTheory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libraries\Trace.h">
+    <ClInclude Include="Algorithms\Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms\Graphs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\SortingTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms\Sorting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestsInclude.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AlgorithmsInclude.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\AzureUtilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\StringTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "Trace.h"
+#include <AzureUtilities.h>
 
 namespace Algorithms {
 

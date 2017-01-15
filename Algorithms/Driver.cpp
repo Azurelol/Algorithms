@@ -12,49 +12,11 @@
 #include <functional>
 
 // Algorithms
-#include "Algorithms.h"
+#include "AlgorithmsInclude.h"
 using namespace Algorithms;
-// Problems
-//#include "Problems.h"
-//using namespace Problems;
-
-
-void Test(bool result, std::string success, std::string failure)
-{
-  if (result)
-    Trace(success);
-  else
-    Trace(failure);
-}
-
-void PrintIsA(bool result, std::string subject, std::string identity)
-{
-  std::string print;
-  if (result)
-    Trace(subject + " is " + identity);
-  else
-    Trace(subject + " is not " + identity);
-}
-
-template <typename Array>
-void Print(Array array)
-{
-  std::cout << "{";
-  for (auto& element : array)
-  {
-    std::cout << element << " ";
-  }
-  std::cout << "}\n";
-}
-
-void PrintSort(const std::vector<int>& unsorted, const std::vector<int>& sorted, std::string message)
-{
-  Trace("Sorting algorithm = " + message);
-  std::cout << "Unsorted: ";
-  Print(unsorted);
-  std::cout << "Sorted: ";
-  Print(sorted);
-}
+// Tests
+#include "TestsInclude.h"
+using namespace Tests;
 
 void TestStrings()
 {
@@ -75,7 +37,7 @@ void TestStrings()
   std::string anagramLeft = "Dog";
   std::string anagramRight = "God";
   bool isAnagram = Algorithms::String::Permutation(anagramLeft, anagramRight);
-  Test(isAnagram, anagramLeft + " is an anagram of " + anagramRight,
+  PrintResult(isAnagram, anagramLeft + " is an anagram of " + anagramRight,
     anagramLeft + " is not an anagram of " + anagramRight);
   // 4. Check if a string is a palindrome
   std::string palindromeString = "lol";
@@ -99,7 +61,7 @@ void TestSort(std::function<void(std::vector<int>)> sortFunc, std::string funcNa
 {
   auto copy = array;
   sortFunc(copy);
-  PrintSort(array, copy, funcName);
+  PrintSortingResult(array, copy, funcName);
 }
 
 void TestSorting()
@@ -136,6 +98,13 @@ intmax_t Factorial(int n)
     factorial = factorial * i;
 
   return factorial;
+}
+
+void TestGraphs()
+{
+  //using namespace Algorithms::Graphs;
+  //auto g = Graph(3);
+
 }
 
 int main(void)

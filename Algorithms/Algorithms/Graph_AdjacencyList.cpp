@@ -1,4 +1,5 @@
-#include "Graphs.h"
+#include "Graph.h"
+
 
 namespace Algorithms
 {
@@ -17,11 +18,11 @@ namespace Algorithms
       {
         for (auto j = 0; j < rows; ++j)
         {
+          auto& val = matrix.Matrix[i][j];
           // If there is a value at this cell, these two vertices make an edge
           if (matrix.Matrix[i][j] != 0)
           {
-            List[i].push_back(j);
-
+            List[i].push_back(AdjacencyNode(j, val));
           }
         }
       }
@@ -35,30 +36,15 @@ namespace Algorithms
         builder << Alphabetize(i) << ": {";
         for (auto j = List[i].begin(); j != List[i].end(); ++j)
         {
-          builder << " " << Alphabetize(*j);
+          builder << " " << Alphabetize((*j).Destination);
         }
         builder << " }\n";
       }
       return builder.str();
     }
 
-    Graph::EdgeList::EdgeList(const AdjacencyList & list)
-    {
-      for (auto i = 0; i < list.List.size(); ++i)
-        for (auto j = list.List[i].begin(); j != list.List[i].end(); ++j)
-          List.push_back(Edge(i, *j));
-    }
 
-    std::string Graph::EdgeList::ToString()
-    {
-      std::stringstream builder;
-      for (auto i = 0; i < List.size(); ++i)
-      {
-        auto& edge = List[i];
-        builder << "{" << Alphabetize(edge.first) << "," << Alphabetize(edge.second) << "}\n";
-      }
-      return builder.str();
-    }
+
   }
 
 }

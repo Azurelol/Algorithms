@@ -1,0 +1,15 @@
+<Window x:Class="Algorithms.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Algorithms"
+        mc:Ignorable="d"
+        Title="Algorithms Example" Height="350" Width="525">
+  <Grid>
+    <Button x:Name="button" Content="Boop" HorizontalAlignment="Left" Margin="223,242,0,0" VerticalAlignment="Top" Width="75" Click="Boop" />
+    <TextBlock x:Name="Messages" HorizontalAlignment="Left" Margin="121,81,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="80" Width="280" />
+    <Label x:Name="label" Content="Label" HorizontalAlignment="Center" Margin="121,52,0,0" VerticalAlignment="Top" Height="24" Width="130"/>
+
+  </Grid>
+</Window>

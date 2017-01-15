@@ -1,4 +1,4 @@
-#include "Sort.h"
+#include "Sorting.h"
 
 namespace Algorithms {
 
