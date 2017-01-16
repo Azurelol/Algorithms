@@ -48,10 +48,13 @@
     <ClCompile Include="Algorithms\Sorting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Libraries\AzureUtilities.cpp">
+    <ClCompile Include="Libraries\Precompiled.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\StringTests.cpp">
+    <ClCompile Include="Libraries\Utilities\AzureUtilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\MergeSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,10 +92,28 @@
     <ClInclude Include="AlgorithmsInclude.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libraries\AzureUtilities.h">
+    <ClInclude Include="Tests\StringTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tests\StringTests.h">
+    <ClInclude Include="Libraries\Precompiled.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\Utilities\AzureUtilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\CipherTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\ProbabilityTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\CountingTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms\Sorting.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestSuite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

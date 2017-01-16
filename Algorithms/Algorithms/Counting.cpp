@@ -1,19 +1,8 @@
 #include "Counting.h"
 
-
-
 namespace Algorithms {
 
   int Counting::IntFactorialLimit = 20;
-
-  //BigInteger Counting::BigFactorial(int n) {
-  //  BigInteger factorial = 1;
-  //  for (int i = 1; i <= n; ++i)
-  //    factorial = factorial * i;
-  //
-  //  return factorial;
-  //}
-
 
 
   int Counting::Factorial(int n) {

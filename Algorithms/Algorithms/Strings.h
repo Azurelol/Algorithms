@@ -8,13 +8,6 @@
 */
 /******************************************************************************/
 #pragma once
-#include <string>
-#include <algorithm>
-#include <cctype>
-#include <map>
-
-// Tracing
-
 
 namespace Algorithms
 {

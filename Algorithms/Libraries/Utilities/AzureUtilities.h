@@ -21,7 +21,6 @@ namespace Utilities
   char Alphabetize(int i);
 
   void PrintResult(bool result, std::string success, std::string failure);
-  void PrintSortingResult(const std::vector<int>& unsorted, const std::vector<int>& sorted, std::string message);
   void PrintIsA(bool result, std::string subject, std::string identity);
 
   template <typename Array>
@@ -36,12 +35,3 @@ namespace Utilities
   }
 
 }
-
-
-
-
-// In ASCII, code numbers start from 48
-//unsigned ToNumber(char a)
-//{
-//  return a - '0';
-//}

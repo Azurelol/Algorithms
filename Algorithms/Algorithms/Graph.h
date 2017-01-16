@@ -1,11 +1,4 @@
 #pragma once
-#include <vector>
-#include <list>
-#include <map>
-
-// Tracing Utilities
-#include <AzureUtilities.h>
-using namespace Utilities;
 
 namespace Algorithms
 {

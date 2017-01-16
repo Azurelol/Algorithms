@@ -15,7 +15,8 @@ namespace Utilities
       Trace(failure);
   }
 
-  void PrintSortingResult(const std::vector<int>& unsorted, const std::vector<int>& sorted, std::string message)
+  template <typename T>
+  void PrintSortingResult(const std::vector<T>& unsorted, const std::vector<T>& sorted, std::string message)
   {
     Trace("Sorting algorithm = " + message);
     std::cout << "Unsorted: ";
