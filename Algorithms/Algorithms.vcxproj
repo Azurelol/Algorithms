@@ -158,12 +158,16 @@
     <ClCompile Include="Algorithms\Graph_AdjacencyList.cpp" />
     <ClCompile Include="Algorithms\Graph_AdjacencyMatrix.cpp" />
     <ClCompile Include="Algorithms\Graph_EdgeList.cpp" />
-    <ClCompile Include="Algorithms\MergeSort.cpp" />
+    <ClCompile Include="Algorithms\Sorting\HeapSort.cpp" />
+    <ClCompile Include="Algorithms\Sorting\InsertionSort.cpp" />
+    <ClCompile Include="Algorithms\Sorting\MergeSort.cpp" />
+    <ClCompile Include="Algorithms\Sorting\QuickSort.cpp" />
+    <ClCompile Include="Algorithms\Sorting\SelectionSort.cpp" />
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Algorithms\Graph.cpp" />
     <ClCompile Include="Algorithms\NumberTheory.cpp" />
     <ClCompile Include="Algorithms\Probability.cpp" />
-    <ClCompile Include="Algorithms\Sorting.cpp" />
+    <ClCompile Include="Algorithms\Sorting\BubbleSort.cpp" />
     <ClCompile Include="Algorithms\Strings.cpp" />
     <ClCompile Include="Libraries\Utilities\AzureUtilities.cpp" />
     <ClCompile Include="Libraries\Precompiled.cpp">
@@ -171,6 +175,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Precompiled.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="Tests\TestSuite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlgorithmsInclude.h" />
@@ -185,6 +190,7 @@
     <ClInclude Include="Algorithms\Strings.h" />
     <ClInclude Include="Libraries\Utilities\AzureUtilities.h" />
     <ClInclude Include="Libraries\Precompiled.h" />
+    <ClInclude Include="Libraries\Utilities\Timer.h" />
     <ClInclude Include="Tests\CipherTests.h" />
     <ClInclude Include="Tests\CountingTests.h" />
     <ClInclude Include="Tests\ProbabilityTests.h" />

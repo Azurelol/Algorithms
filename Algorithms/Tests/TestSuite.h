@@ -4,89 +4,46 @@ namespace Tests
 {
   class TestSuite
   {
+  public:
 
-  private:
-    //------------------------------------------------------------------------/
-    // Declarations
-    //------------------------------------------------------------------------/
-    using TestFunction = std::function<void()>;
     struct Test
     {
+      using Function = std::function<void()>;
+      using Group = std::vector<Test>;
       std::string Description;
-      TestFunction Function;
-      Test(std::string desc, TestFunction func)
-        : Description(desc), Function(func)
+      Function Function_;
+      Test(std::string desc, Function func) : Description(desc), Function_(func) {}
+      void Invoke() { Function_(); }
+
+      struct Category
       {
-      }
+        //int NumberOfTests;
+        std::string Name;
+        Group Tests;
+        Category(std::string name, Group& tests) : Name(name), Tests(tests) {}
+        Category& operator=(Group& tests) { Tests = tests; }
+        void Add(std::string name, Function test) { Tests.push_back(Test(name, test)); }
+      };
 
     };
 
-    //------------------------------------------------------------------------/
-    // Methods
-    //------------------------------------------------------------------------/
-    int ReadNumberFromConsole(std::string prompt, int min = INT_MIN, int max = INT_MAX)
-    {
-      std::string line;
-      int num;
-
-      while ((std::cout << prompt) && std::getline(std::cin, line))
-      {
-        std::istringstream is{ line };
-        if ((is >> num) && !(is >> line) && (num >= min) && (num <= max))
-        {
-          break;
-        }
-        std::cerr << "Invalid input, try again." << std::endl;
-      }
-
-      return num;
-    }
-
+    using TestCategory = std::map<int, Test>;
     using TestAddress = std::pair<int, Test>;
-    std::map<int, Test> Tests;
-    int NumberOfTests;
+    using CategoryAddress = std::pair<std::string, Test::Category>;
 
-  public:
+    // Methods
+    TestSuite();
+    //void Add(std::string name, Test::Function test);
+    void Add(std::string name, Test::Group category);
+    void Display();
 
-    TestSuite() : NumberOfTests(1)
-    {
-    }
-
-    void Add(std::string name, TestFunction test)
-    {
-      Tests.insert(TestAddress(NumberOfTests++, Test(name, test)));
-    }
-
-    void Display()
-    {
-      bool active = true;
-      while (active)
-      {
-        // Print all tests
-        Trace("------------------------------");
-        Trace("Select an test:");
-        Trace("------------------------------");
-        for (auto& test : Tests)
-        {
-          Trace(test.first << "." << test.second.Description);
-        }
-        Newline(1);
-
-        // Accept an option
-        int option;
-        option = ReadNumberFromConsole("Input the test number and press enter: ", 1, NumberOfTests);
-
-        // Now call the test function
-        Newline(1);
-        Trace("{");
-        auto& func = Tests.at(option).Function;
-        func();
-        Trace("}");
-        Newline(1);
-
-      }
-    }
-
+  private:
+    //TestCategory Tests;
+    //int NumberOfTests;
+    Test::Category PickCategory();
+    Test PickTest(const TestSuite::Test::Category& category);
+    std::vector<Test::Category> Categories;
+    int ReadNumberFromConsole(std::string prompt, int min = INT_MIN, int max = INT_MAX);
 
   };
 }

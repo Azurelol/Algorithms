@@ -13,11 +13,10 @@
 
 int main(void)
 {
+  // Add all tests
   auto testSuite = Tests::TestSuite();
-  testSuite.Add("Bubble Sort", Tests::BubbleSort);
-  testSuite.Add("Selection Sort", Tests::SelectionSort);
-  testSuite.Add("Nerge Sort", Tests::MergeSort);
-  testSuite.Add("Quick Sort", Tests::QuickSort);
+  testSuite.Add("Sorting", Tests::SortingTests);
+
 
   try
   {

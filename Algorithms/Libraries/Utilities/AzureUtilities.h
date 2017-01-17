@@ -10,6 +10,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include "Timer.h"
 
 // Simple trace
 #define Trace(message) std::cout << message << "\n"
@@ -19,12 +20,13 @@
 namespace Utilities
 {
   char Alphabetize(int i);
+  int ToInt(size_t i);
 
   void PrintResult(bool result, std::string success, std::string failure);
   void PrintIsA(bool result, std::string subject, std::string identity);
 
   template <typename Array>
-  void Print(Array array)
+  void Print(const Array& array)
   {
     std::cout << "{";
     for (auto& element : array)
@@ -33,5 +35,7 @@ namespace Utilities
     }
     std::cout << "}\n";
   }
+
+
 
 }

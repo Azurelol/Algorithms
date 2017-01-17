@@ -45,16 +45,31 @@
     <ClCompile Include="Algorithms\Graph_AdjacencyMatrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Algorithms\Sorting.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Libraries\Precompiled.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Libraries\Utilities\AzureUtilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Algorithms\MergeSort.cpp">
+    <ClCompile Include="Algorithms\Sorting\MergeSort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Sorting\QuickSort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Sorting\BubbleSort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Sorting\SelectionSort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Sorting\HeapSort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Sorting\InsertionSort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\TestSuite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -114,6 +129,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Tests\TestSuite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\Utilities\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

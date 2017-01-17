@@ -7,6 +7,11 @@ namespace Utilities
     return static_cast<char>('A' + i);
   }
 
+  int ToInt(size_t i)
+  {
+    return static_cast<int>(i);
+  }
+
   void PrintResult(bool result, std::string success, std::string failure)
   {
     if (result)
