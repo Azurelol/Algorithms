@@ -4,6 +4,5 @@
 #include "Tests\StringTests.h"
 #include "Tests\SortingTests.h"
 #include "Tests\ProbabilityTests.h"
-
-// Test suite
-#include "Tests\TestSuite.h"
+#include "Tests\GraphTests.h"
+#include "Tests\CountingTests.h"

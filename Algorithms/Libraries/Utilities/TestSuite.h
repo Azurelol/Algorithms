@@ -10,6 +10,7 @@ namespace Tests
     {
       using Function = std::function<void()>;
       using Group = std::vector<Test>;
+
       std::string Description;
       Function Function_;
       Test(std::string desc, Function func) : Description(desc), Function_(func) {}
@@ -17,13 +18,26 @@ namespace Tests
 
       struct Category
       {
-        //int NumberOfTests;
         std::string Name;
         Group Tests;
+
         Category(std::string name, Group& tests) : Name(name), Tests(tests) {}
         Category& operator=(Group& tests) { Tests = tests; }
         void Add(std::string name, Function test) { Tests.push_back(Test(name, test)); }
       };
+
+      //struct TestingUnit
+      //{
+      //  using MemberFunction = std::function<void(TestingUnit&)>;
+      //
+      //  TestingUnit(TestSuite::Test::Group& group)
+      //  {
+      //    MemberFunction fn = &Run;
+      //    //group.push_back(this);
+      //  }
+      //  virtual std::string Name() = 0;
+      //  virtual void Run() = 0;
+      //};
 
     };
 

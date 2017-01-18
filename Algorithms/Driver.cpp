@@ -16,7 +16,8 @@ int main(void)
   // Add all tests
   auto testSuite = Tests::TestSuite();
   testSuite.Add("Sorting", Tests::SortingTests);
-
+  testSuite.Add("Strings", Tests::StringTests);
+  testSuite.Add("Graphs", Tests::GraphTests);
 
   try
   {

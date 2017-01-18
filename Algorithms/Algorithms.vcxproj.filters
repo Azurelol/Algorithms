@@ -69,7 +69,16 @@
     <ClCompile Include="Algorithms\Sorting\InsertionSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\TestSuite.cpp">
+    <ClCompile Include="Libraries\Utilities\TestSuite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Graphs\Dijsktra.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Graphs\Prim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Graphs\Kruskal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -128,10 +137,13 @@
     <ClInclude Include="Algorithms\Sorting.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tests\TestSuite.h">
+    <ClInclude Include="Libraries\Utilities\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libraries\Utilities\Timer.h">
+    <ClInclude Include="Libraries\Utilities\TestSuite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\GraphTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

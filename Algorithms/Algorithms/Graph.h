@@ -14,9 +14,9 @@ namespace Algorithms
       // The type of vertex. Usually a char or an unsigned integer.
       using VertexType = unsigned;
       // The value type used by the graph. Either an unsigned integer or float.
-      using ValueType = float;
+      using ValueType = float;     
 
-      using Path = std::vector<unsigned>;
+      //using Path = std::vector<VertexType>;
 
       //------------------------------------------------------------------------/
       // Declarations
@@ -28,12 +28,36 @@ namespace Algorithms
       //  Vertex(VertexType id) : ID(id) {}
       //};
 
+      struct Path
+      {
+        std::vector<VertexType> Vertices;
+
+        int Count() { return ToInt(Vertices.size()); }
+        void Add(VertexType v) { Vertices.push_back(v); }
+        std::string ToString()
+        {
+          StringBuilder builder;
+          for (auto& p : Vertices)
+            builder.Append(p);
+          return builder.ToString();
+        }
+
+        using Function = std::function<Path(const Graph&)>;
+      };
       
+      //template <typename Size>
+      //struct StaticMatrix {
+      //  std::array<std::array<int, Size>, Size> Damn;
+      //};
+
       struct AdjacencyMatrix
       {
-        std::vector<std::vector<ValueType>> Matrix;
+        using DynamicContainer = std::vector<std::vector<VertexType>>;
+        DynamicContainer Matrix;
 
+        //AdjacencyMatrix(std)
         AdjacencyMatrix(int rows);
+        AdjacencyMatrix(DynamicContainer mtx) : Matrix(mtx) {}
         AdjacencyMatrix operator*(AdjacencyMatrix other);
         AdjacencyMatrix operator+(AdjacencyMatrix other);
 
@@ -93,7 +117,7 @@ namespace Algorithms
       AdjacencyMatrix Matrix;
       AdjacencyList List;
       int _Vertices;
-      bool Tracing;
+      bool IsLogging;
       
 
     public:
@@ -107,7 +131,10 @@ namespace Algorithms
       // Methods
       //------------------------------------------------------------------------/
       Graph(int vertices);
+      Graph(const AdjacencyMatrix& matrix);
+      Graph(const AdjacencyList& list);
       bool IsConnected() const;
+      std::string Print() const;
       
     };
 

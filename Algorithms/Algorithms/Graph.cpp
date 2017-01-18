@@ -8,5 +8,20 @@ namespace Algorithms
     {
     }
 
+    Graph::Graph(const AdjacencyMatrix & matrix) : Matrix(matrix), List(matrix),_Vertices(matrix.Rows()) 
+    {
+
+    }
+
+    bool Graph::IsConnected() const
+    {
+      return false;
+    }
+
+    std::string Graph::Print() const
+    {
+      return std::string();
+    }
+
   }
 }

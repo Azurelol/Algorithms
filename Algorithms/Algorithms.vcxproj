@@ -155,6 +155,9 @@
   <ItemGroup>
     <ClCompile Include="Algorithms\Cipher.cpp" />
     <ClCompile Include="Algorithms\Counting.cpp" />
+    <ClCompile Include="Algorithms\Graphs\Dijsktra.cpp" />
+    <ClCompile Include="Algorithms\Graphs\Kruskal.cpp" />
+    <ClCompile Include="Algorithms\Graphs\Prim.cpp" />
     <ClCompile Include="Algorithms\Graph_AdjacencyList.cpp" />
     <ClCompile Include="Algorithms\Graph_AdjacencyMatrix.cpp" />
     <ClCompile Include="Algorithms\Graph_EdgeList.cpp" />
@@ -175,7 +178,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Precompiled.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="Tests\TestSuite.cpp" />
+    <ClCompile Include="Libraries\Utilities\TestSuite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlgorithmsInclude.h" />
@@ -193,11 +196,12 @@
     <ClInclude Include="Libraries\Utilities\Timer.h" />
     <ClInclude Include="Tests\CipherTests.h" />
     <ClInclude Include="Tests\CountingTests.h" />
+    <ClInclude Include="Tests\GraphTests.h" />
     <ClInclude Include="Tests\ProbabilityTests.h" />
     <ClInclude Include="Tests\SortingTests.h" />
     <ClInclude Include="TestsInclude.h" />
     <ClInclude Include="Tests\StringTests.h" />
-    <ClInclude Include="Tests\TestSuite.h" />
+    <ClInclude Include="Libraries\Utilities\TestSuite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

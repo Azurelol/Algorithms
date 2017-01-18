@@ -3,10 +3,13 @@
 #include "..\Algorithms\Sorting.h"
 using namespace Algorithms;
 
-#include "TestSuite.h"
-
 namespace Tests
 {
+  //------------------------------------------------------------------------/
+  // Data Sets
+  //------------------------------------------------------------------------/
+  Sorting::Collection IntegersSmall{ 7, 8, 18, 4, 5, 9, 14, 3, 10, 2 };
+
   // Print function
   template <typename T>
   void PrintSortingResult(const std::vector<T>& unsorted, const std::vector<T>& sorted, std::string message, float timeElapsed)
@@ -14,10 +17,10 @@ namespace Tests
     Trace("- Sorting algorithm: " + message);
     //Newline(1);
     Trace("Unsorted");
-    Print(unsorted);
+    PrintArray(unsorted);
     Newline(1);
     Trace("Sorted [" << timeElapsed << "]");
-    Print(sorted);
+    PrintArray(sorted);
   }
 
   // Test function
@@ -41,8 +44,6 @@ namespace Tests
   //  PrintSortingResult(input, sorted, funcName);
   //}
 
-  // Input data
-  Sorting::Collection IntegersSmall{ 7, 8, 18, 4, 5, 9, 14, 3, 10, 2 };
 
   void BubbleSort()
   {

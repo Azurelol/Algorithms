@@ -25,8 +25,44 @@ namespace Utilities
   void PrintResult(bool result, std::string success, std::string failure);
   void PrintIsA(bool result, std::string subject, std::string identity);
 
+  template <typename T>
+  void PrintTransformation(std::string algorithm, const T& before, const T& after)
+  {
+    Trace(algorithm);
+    Trace("Before:");
+    Trace(before);
+    Trace("After:");
+    Trace(after);
+  }
+
+  class StringBuilder
+  {
+    std::stringstream Stream;
+
+  public:
+
+    template <typename T>
+    void Append(T obj)
+    {
+      Stream << obj;
+    }
+
+    template <typename T>
+    void AppendLine(T obj)
+    {
+      Append(obj << "\n");
+    }
+
+    std::string ToString()
+    {
+      return Stream.str();
+    }
+
+  };
+
+  // Prints the contents of an array
   template <typename Array>
-  void Print(const Array& array)
+  void PrintArray(const Array& array)
   {
     std::cout << "{";
     for (auto& element : array)
@@ -35,6 +71,8 @@ namespace Utilities
     }
     std::cout << "}\n";
   }
+
+
 
 
 

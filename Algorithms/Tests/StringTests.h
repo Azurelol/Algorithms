@@ -5,10 +5,22 @@ using namespace Algorithms;
 
 namespace Tests
 {
+  //------------------------------------------------------------------------/
+  // Data Sets
+  //------------------------------------------------------------------------/
+
+  //------------------------------------------------------------------------/
+  // Print
+  //------------------------------------------------------------------------/
+
+
+  //------------------------------------------------------------------------/
+  // Tests
+  //------------------------------------------------------------------------/
   void Unique()
   {
     // 1. Determines if a string has all unique characters
-    std::string uniqueString = "research";
+    std::string uniqueString = "Research";
     bool isUnique = Algorithms::String::Unique(uniqueString);
     PrintIsA(isUnique, uniqueString, "unique!");
   }
@@ -64,5 +76,14 @@ namespace Tests
     std::string parent = "Megaboss", child = "boss";
     PrintIsA(Algorithms::String::Substring(parent, child), child, " a substring of '" + parent + "'");
   }
+
+  // Define all available tests
+  TestSuite::Test::Group StringTests =
+  {
+    TestSuite::Test("Unique", Unique),
+    TestSuite::Test("Reverse", Reverse),
+    TestSuite::Test("Anagram", Anagram),
+    TestSuite::Test("Palindrome", Palindrome),
+  };
 
 }

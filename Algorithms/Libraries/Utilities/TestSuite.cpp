@@ -33,13 +33,17 @@ namespace Tests
 
   void TestSuite::Display()
   {
+    // If there's no categories, throw!
+    if (Categories.empty())
+      throw ("No categories available!");
+
     bool active = true;
     while (active)
     {
-      // Pick a category
       Trace("------------------------------");
+      // Pick a category
       auto category = PickCategory();
-      Newline(1);
+      
       // Pick a test
       auto test = PickTest(category);
       // Now call the test function
@@ -52,6 +56,10 @@ namespace Tests
 
   TestSuite::Test::Category TestSuite::PickCategory()
   {    
+    // If there's only one category, just return it
+    if (Categories.size() == 1)
+      return Categories[0];
+
     Trace("- Select a category:");
     // Display all categories
     auto numCategories = ToInt(Categories.size());
@@ -62,6 +70,7 @@ namespace Tests
     }
     // Pick
     auto option = ReadNumberFromConsole("> Input the category number and press enter: ", 1, numCategories);
+    Newline(1);
     return Categories[option - 1];
   }
 
