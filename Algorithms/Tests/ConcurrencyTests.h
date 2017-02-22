@@ -5,10 +5,6 @@ using namespace Algorithms::Concurrency;
 
 namespace Tests
 {
-  void a1()
-  {
-
-  }
 
   /// <summary>
   /// One thread sends a signal to another thread to indicate that something has happened
