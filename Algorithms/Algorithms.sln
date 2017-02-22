@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithms", "Algorithms.vcxproj", "{0DCA9572-332E-4612-940B-FB740CFA20A2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ParallelProgramming", "..\ParallelProgramming\ParallelProgramming.vcxproj", "{D60A153D-EA43-460B-8CB1-983B6D8EFD8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{0DCA9572-332E-4612-940B-FB740CFA20A2}.Release|x64.Build.0 = Release|x64
 		{0DCA9572-332E-4612-940B-FB740CFA20A2}.Release|x86.ActiveCfg = Release|Win32
 		{0DCA9572-332E-4612-940B-FB740CFA20A2}.Release|x86.Build.0 = Release|Win32
+		{D60A153D-EA43-460B-8CB1-983B6D8EFD8D}.Debug|x64.ActiveCfg = Debug|x64
+		{D60A153D-EA43-460B-8CB1-983B6D8EFD8D}.Debug|x64.Build.0 = Debug|x64
+		{D60A153D-EA43-460B-8CB1-983B6D8EFD8D}.Debug|x86.ActiveCfg = Debug|Win32
+		{D60A153D-EA43-460B-8CB1-983B6D8EFD8D}.Debug|x86.Build.0 = Debug|Win32
+		{D60A153D-EA43-460B-8CB1-983B6D8EFD8D}.Release|x64.ActiveCfg = Release|x64
+		{D60A153D-EA43-460B-8CB1-983B6D8EFD8D}.Release|x64.Build.0 = Release|x64
+		{D60A153D-EA43-460B-8CB1-983B6D8EFD8D}.Release|x86.ActiveCfg = Release|Win32
+		{D60A153D-EA43-460B-8CB1-983B6D8EFD8D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
