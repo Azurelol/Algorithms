@@ -18,7 +18,7 @@ namespace Algorithms
       {
         for (auto j = 0; j < rows; ++j)
         {
-          auto& val = matrix.Matrix[i][j];
+          auto val = static_cast<ValueType>(matrix.Matrix[i][j]);
           // If there is a value at this cell, these two vertices make an edge
           if (matrix.Matrix[i][j] != 0)
           {
@@ -28,7 +28,7 @@ namespace Algorithms
       }
     }
 
-    std::string Graph::AdjacencyList::ToString()
+    std::string Graph::AdjacencyList::ToString() const
     {
       std::stringstream builder;
       for (auto i = 0; i < List.size(); ++i)

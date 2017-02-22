@@ -10,6 +10,9 @@
 #include <algorithm>
 #include <cctype>
 #include <functional>
+#include <thread>
+#include <condition_variable>
+#include <mutex>
 
 // Utilities
 #include <Utilities\TestSuite.h>

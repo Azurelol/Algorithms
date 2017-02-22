@@ -1,5 +1,5 @@
 #pragma once
-#include "Graph.h"
+#include "Graphs\Graph.h"
 
 namespace Algorithms
 {

@@ -27,7 +27,7 @@ namespace Algorithms
         // For every column, multiply it by every other column
         for (auto j = 0; j < rows; ++j)
         {
-          auto sum = 0.0f;
+          auto sum = 0;
           for (auto k = 0; k < rows; ++k)
           {
             sum += this->Matrix[i][k] * other.Matrix[k][j];
@@ -56,7 +56,7 @@ namespace Algorithms
       return result;
     }
 
-    std::string Graph::AdjacencyMatrix::ToString()
+    std::string Graph::AdjacencyMatrix::ToString() const
     {
       std::stringstream builder;
 

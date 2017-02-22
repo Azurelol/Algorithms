@@ -6,3 +6,4 @@
 #include "Tests\ProbabilityTests.h"
 #include "Tests\GraphTests.h"
 #include "Tests\CountingTests.h"
+#include "Tests\ConcurrencyTests.h"
