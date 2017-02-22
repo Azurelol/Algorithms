@@ -11,17 +11,11 @@ namespace Tests
   //------------------------------------------------------------------------/
   Graph::AdjacencyMatrix::DynamicContainer Small = 
   {
-    {1,2,3},
-    {3,5,6},
-    {5,7,8}
+    {0,3,1,0},
+    {3,0,7,1},
+    {1,7,0,0},
+    {0,1,0,0}
   };
-
-  //Graph::AdjacencyMatrix::DynamicContainer damn = 
-  //{    
-  //  {3,2,5},
-  //  {1,2,3},
-  //  {5,5,5}    
-  //}
 
   //------------------------------------------------------------------------/
   // Print
@@ -63,7 +57,7 @@ namespace Tests
   void Connectivity()
   {
     auto a = Graph(Small);
-
+    PrintIsConnected(a);
     //auto a = Graphs::Graph(4);
     //a.Matrix[0] = { 0,3,1,0 };
     //a.Matrix[1] = { 3,0,7,1 };

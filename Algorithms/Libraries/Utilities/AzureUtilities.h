@@ -13,9 +13,25 @@
 #include "Timer.h"
 
 // Simple trace
-#define Trace(message) std::cout << message << "\n"
-// Add a new line
+//extern bool IsLogging = false;
+#define Trace(message)                 \
+        std::cout << message << "\n"
+
+// Add a specified number of new lines
 #define Newline(lines) std::cout; for (int i = 0; i < lines; ++i) std::cout << "\n"
+
+///// <summary>
+///// A simple RAII switch that will flip the value of the boolean when the scope exits
+///// </summary>
+//class ScopeBooleanSwitch
+//{
+//  bool& Reference;
+//  public:
+//  ~ScopeBooleanSwitch() { Reference = !Reference; }
+//  ScopeBooleanSwitch(bool& reference) : Reference(reference) { Reference = true; }
+//};
+//
+//#define LogThisScope auto scopeLogger = ScopeBooleanSwitch(IsLogging)
 
 namespace Utilities
 {

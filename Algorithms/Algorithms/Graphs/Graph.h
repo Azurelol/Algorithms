@@ -20,13 +20,14 @@ namespace Algorithms
 
       //------------------------------------------------------------------------/
       // Declarations
-      //------------------------------------------------------------------------/      
-      //struct Vertex
-      //{
-      //  VertexType ID;
-      //  std::vector<Vertex> Neighbors;
-      //  Vertex(VertexType id) : ID(id) {}
-      //};
+      //------------------------------------------------------------------------/     
+
+      // How the graph may be represented
+      enum class Representation
+      {
+        AdjacencyMatrix,
+        AdjacencyList
+      };
 
       struct Path
       {
@@ -45,10 +46,25 @@ namespace Algorithms
         using Function = std::function<Path(const Graph&)>;
       };
       
-      //template <typename Size>
-      //struct StaticMatrix {
-      //  std::array<std::array<int, Size>, Size> Damn;
-      //};
+      struct Vertex
+      {
+        VertexType ID;
+        std::vector<Vertex> Neighbors;
+        Vertex(VertexType id) : ID(id) {}
+      };
+
+
+      struct Edge
+      {
+        VertexType Source;
+        VertexType Destination;
+        ValueType Weight;
+        Edge(VertexType source, VertexType destination, ValueType weight)
+          : Source(source), Destination(destination), Weight(weight)
+        {
+        }
+      };
+
 
       struct AdjacencyMatrix
       {
@@ -62,7 +78,7 @@ namespace Algorithms
         AdjacencyMatrix operator+(AdjacencyMatrix other);
 
         int Rows() const { return static_cast<int>(Matrix.size()); }
-        std::string ToString();
+        std::string ToString() const;
       };
 
       struct AdjacencyNode
@@ -78,19 +94,9 @@ namespace Algorithms
         AdjacencyList(const AdjacencyMatrix& matrix);
         AdjacencyList() {}
         void Build(const AdjacencyMatrix& matrix);
-        std::string ToString();
+        std::string ToString() const;
       };
       
-      struct Edge
-      {
-        VertexType Source;
-        VertexType Destination;
-        ValueType Weight;
-        Edge(VertexType source, VertexType destination, ValueType weight)
-          : Source(source), Destination(destination), Weight(weight)
-        {
-        }
-      };
 
       struct EdgeList
       {
@@ -105,7 +111,7 @@ namespace Algorithms
         EdgeList(const AdjacencyList& list);
         EdgeList() {}
         void AddEdge(VertexType source, VertexType destination, ValueType weight, EdgeType type);
-        std::string ToString();
+        std::string ToString() const;
       };
 
 
@@ -114,11 +120,13 @@ namespace Algorithms
       //------------------------------------------------------------------------/
       // Fields
       //------------------------------------------------------------------------/
+
+      // The current adjacency matrix representation for this graph
       AdjacencyMatrix Matrix;
+      // The current adjacency list representation for this graph
       AdjacencyList List;
       int _Vertices;
-      bool IsLogging;
-      
+      bool IsLogging;      
 
     public:
 
@@ -134,7 +142,7 @@ namespace Algorithms
       Graph(const AdjacencyMatrix& matrix);
       Graph(const AdjacencyList& list);
       bool IsConnected() const;
-      std::string Print() const;
+      std::string Print(Representation representation = Representation::AdjacencyMatrix) const;
       
     };
 

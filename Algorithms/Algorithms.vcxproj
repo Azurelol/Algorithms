@@ -154,20 +154,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Algorithms\Cipher.cpp" />
+    <ClCompile Include="Algorithms\Concurrency.cpp" />
     <ClCompile Include="Algorithms\Counting.cpp" />
     <ClCompile Include="Algorithms\Graphs\Dijsktra.cpp" />
     <ClCompile Include="Algorithms\Graphs\Kruskal.cpp" />
     <ClCompile Include="Algorithms\Graphs\Prim.cpp" />
-    <ClCompile Include="Algorithms\Graph_AdjacencyList.cpp" />
-    <ClCompile Include="Algorithms\Graph_AdjacencyMatrix.cpp" />
-    <ClCompile Include="Algorithms\Graph_EdgeList.cpp" />
+    <ClCompile Include="Algorithms\Graphs\Graph_AdjacencyList.cpp" />
+    <ClCompile Include="Algorithms\Graphs\Graph_AdjacencyMatrix.cpp" />
+    <ClCompile Include="Algorithms\Graphs\Graph_EdgeList.cpp" />
     <ClCompile Include="Algorithms\Sorting\HeapSort.cpp" />
     <ClCompile Include="Algorithms\Sorting\InsertionSort.cpp" />
     <ClCompile Include="Algorithms\Sorting\MergeSort.cpp" />
     <ClCompile Include="Algorithms\Sorting\QuickSort.cpp" />
     <ClCompile Include="Algorithms\Sorting\SelectionSort.cpp" />
+    <ClCompile Include="DataStructures\HashTable\HashFunction.cpp" />
+    <ClCompile Include="DataStructures\HashTable\HashTable.cpp" />
     <ClCompile Include="Driver.cpp" />
-    <ClCompile Include="Algorithms\Graph.cpp" />
+    <ClCompile Include="Algorithms\Graphs\Graph.cpp" />
     <ClCompile Include="Algorithms\NumberTheory.cpp" />
     <ClCompile Include="Algorithms\Probability.cpp" />
     <ClCompile Include="Algorithms\Sorting\BubbleSort.cpp" />
@@ -181,22 +184,28 @@
     <ClCompile Include="Libraries\Utilities\TestSuite.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AlgorithmsInclude.h" />
+    <ClInclude Include="Algorithms\AlgorithmsInclude.h" />
     <ClInclude Include="Algorithms\Cipher.h" />
+    <ClInclude Include="Algorithms\Concurrency.h" />
     <ClInclude Include="Algorithms\Counting.h" />
-    <ClInclude Include="Algorithms\Graph.h" />
+    <ClInclude Include="Algorithms\Graphs\Graph.h" />
     <ClInclude Include="Algorithms\Graphs.h" />
     <ClInclude Include="Algorithms\NumberTheory.h" />
     <ClInclude Include="Algorithms\Probability.h" />
     <ClInclude Include="Algorithms\Sorting.h" />
     <ClInclude Include="Algorithms\Sorting.hpp" />
     <ClInclude Include="Algorithms\Strings.h" />
+    <ClInclude Include="DataStructures\DataStructuresInclude.h" />
+    <ClInclude Include="DataStructures\HashTable.h" />
+    <ClInclude Include="DataStructures\HashTable\HashFunction.h" />
     <ClInclude Include="Libraries\Utilities\AzureUtilities.h" />
     <ClInclude Include="Libraries\Precompiled.h" />
     <ClInclude Include="Libraries\Utilities\Timer.h" />
     <ClInclude Include="Tests\CipherTests.h" />
+    <ClInclude Include="Tests\ConcurrencyTests.h" />
     <ClInclude Include="Tests\CountingTests.h" />
     <ClInclude Include="Tests\GraphTests.h" />
+    <ClInclude Include="Tests\HashTableTests.h" />
     <ClInclude Include="Tests\ProbabilityTests.h" />
     <ClInclude Include="Tests\SortingTests.h" />
     <ClInclude Include="TestsInclude.h" />

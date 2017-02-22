@@ -11,6 +11,9 @@
 // Tests
 #include "TestsInclude.h"
 
+
+
+
 int main(void)
 {
   // Add all tests
@@ -18,6 +21,7 @@ int main(void)
   testSuite.Add("Sorting", Tests::SortingTests);
   testSuite.Add("Strings", Tests::StringTests);
   testSuite.Add("Graphs", Tests::GraphTests);
+  testSuite.Add("Concurrency", Tests::ConcurrencyTests);
 
   try
   {

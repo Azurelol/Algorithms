@@ -20,7 +20,7 @@ namespace Algorithms
       //List.push_back(Edge())
     }
 
-    std::string Graph::EdgeList::ToString()
+    std::string Graph::EdgeList::ToString() const
     {
       std::stringstream builder;
       for (auto i = 0; i < List.size(); ++i)

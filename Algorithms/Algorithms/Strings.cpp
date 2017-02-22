@@ -1,6 +1,5 @@
 #include "Strings.h"
 
-#include <AzureUtilities.h>
 
 namespace Algorithms {
 

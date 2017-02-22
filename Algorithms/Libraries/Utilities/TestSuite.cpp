@@ -61,6 +61,7 @@ namespace Tests
       return Categories[0];
 
     Trace("- Select a category:");
+    Newline(1);
     // Display all categories
     auto numCategories = ToInt(Categories.size());
     for (auto i = 0; i < numCategories; ++i)
@@ -69,6 +70,7 @@ namespace Tests
       Trace(i + 1 << ". " << category.Name);
     }
     // Pick
+    Newline(1);
     auto option = ReadNumberFromConsole("> Input the category number and press enter: ", 1, numCategories);
     Newline(1);
     return Categories[option - 1];
@@ -77,6 +79,7 @@ namespace Tests
   TestSuite::Test TestSuite::PickTest(const TestSuite::Test::Category& category)
   {    
     Trace("- Select a test:");
+    Newline(1);
     auto& tests = category.Tests;
     auto numTests = ToInt(tests.size());
 
@@ -86,6 +89,7 @@ namespace Tests
       Trace(i + 1 << ". " << test.Description);
     }
     // Pick
+    Newline(1);
     auto option = ReadNumberFromConsole("> Input the test number and press enter: ", 1, numTests);
     return tests[option - 1];
   }
