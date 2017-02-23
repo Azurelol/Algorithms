@@ -8,21 +8,24 @@ namespace Algorithms
     // Semaphore
     //----------------------------------------------------------------------------/
 
-    /// <summary>
-    /// Semaphore constructor, which sets the maximum amount of threads.
-    /// </summary>
-    /// <param name="numThreads"></param>
+    Semaphore::Semaphore() : Count(1)
+    {
+    }
+
+
     Semaphore::Semaphore(int numThreads) : Count(numThreads)
     {
       //Trace("Created semaphore with '" << numThreads << "' maximum threads!");
     }
 
-    /// <summary>
-    /// Decrements the value of this semaphore by one. 
-    /// If the value is zero, then this will block the thread until
-    /// the value becoems greater than zero.
-    /// </summary>
-    void Semaphore::wait()
+
+    void Semaphore::Initialize(int numThreads)
+    {
+      this->Count = numThreads;
+    }
+
+
+    void Semaphore::Wait()
     {
       // This RAII object will lock the mutex until we exit scope
       //Trace("About to lock mutex!");
@@ -39,10 +42,8 @@ namespace Algorithms
 
     }
 
-    /// <summary>
-    /// Increments the value of the semaphore by one.
-    /// </summary>
-    void Semaphore::signal()
+
+    void Semaphore::Signal()
     {
       std::unique_lock<std::mutex> lock(this->Mutex);
       //Trace("Trying to signal!");

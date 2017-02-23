@@ -5,6 +5,23 @@ using namespace Algorithms::Concurrency;
 
 namespace Tests
 {
+  ///// <summary>
+  ///// Calls this function among the specified number of threads
+  ///// </summary>
+  ///// <param name="threads"></param>
+  ///// <param name="func"></param>
+  //template <typename ... Arguments>
+  //void RunThreaded(int n, std::function<void(Arguments)> func)
+  //{
+  //  std::vector<std::thread> threads(n);
+  //  for (auto i = 0; i < n; ++i)
+  //  {
+  //    threads[i] = std::thread([&]()
+  //    {
+  //      func(i);
+  //    });
+  //  }
+  //}
 
   /// <summary>
   /// One thread sends a signal to another thread to indicate that something has happened
@@ -19,7 +36,7 @@ namespace Tests
     auto t1 = std::thread([&]()
     {
       AtomicTrace("a1");
-      sem.signal();
+      sem.Signal();
       AtomicTrace("a2");
     }
     );
@@ -27,7 +44,7 @@ namespace Tests
     auto t2 = std::thread([&]()
     {
       AtomicTrace("b1");
-      sem.wait();
+      sem.Wait();
       AtomicTrace("b2");
     }
     );
@@ -51,8 +68,8 @@ namespace Tests
     auto t1 = std::thread([&]()
     {
       AtomicTrace("a1");
-      semA.signal();
-      semB.wait();
+      semA.Signal();
+      semB.Wait();
       AtomicTrace("a2");
     }
     );
@@ -60,8 +77,8 @@ namespace Tests
     auto t2 = std::thread([&]()
     {
       AtomicTrace("b1");
-      semB.signal();
-      semA.wait();
+      semB.Signal();
+      semA.Wait();
       AtomicTrace("b2");
     }
     );
@@ -91,9 +108,9 @@ namespace Tests
       threads[i] = std::thread([&]()
       {
         auto id = i;
-        sem.wait();
+        sem.Wait();
         AtomicTrace("Executing #" << id);
-        sem.signal();
+        sem.Signal();
       });
     }
 
@@ -124,30 +141,30 @@ namespace Tests
       {
         auto id = i;
 
-        AtomicTrace("#" << id << " is waiting!");
-        mutex.wait();
+        Trace("#" << id << " is waiting!");
+        mutex.Wait();
         count = count + 1;
-        mutex.signal();
-        AtomicTrace("#" << id << " has signaled!");
+        mutex.Signal();
+        Trace("#" << id << " has signaled!");
 
         if (count == n)
         {
           //AtomicTrace("#" << id << " has matched the count. It has signaled!");
-          barrier.signal();
+          barrier.Signal();
         }
         else
         {
           //AtomicTrace("count(" << count << ") != n(" << n << ")");
         }
 
-        AtomicTrace("#" << id << " is waiting!");
+        Trace("#" << id << " is waiting!");
 
         // Turnstile: Rapid sequence of wait-signal that lets all thread to
         // continue after nth thread arrives.
-        barrier.wait();
-        barrier.signal();
+        barrier.Wait();
+        barrier.Signal();
 
-        AtomicTrace("#" << id << " has entered critical section!");
+        Trace("#" << id << " has entered critical section!");
 
       });
     }
@@ -163,19 +180,20 @@ namespace Tests
   /// </summary>
   void ReusableBarrier()
   {
-    enum class Solution { Attempt1, Attempt2, CorrectSolution };
+    enum class Solution { Attempt1, Attempt2, Correct };
+    auto algorithm = Solution::Correct;
 
     auto count = 0;
     auto& mutex = Semaphore(1);
     auto& turnstile1 = Semaphore(0);
     auto& turnstile2 = Semaphore(1);
 
-    auto n = 5;
+    auto n = 3;
     std::vector<std::thread> threads(n);
-    auto k = 3;
+    auto k = 2;
     Trace("Threads = '" << n << "', Iterations = '" << k << "'");
 
-    auto algorithm = Solution::Attempt2;
+
 
     for (auto i = 0; i < n; ++i)
     {
@@ -185,80 +203,80 @@ namespace Tests
         auto iterations = k;
         while (iterations > 0)
         {
-          AtomicTrace("#" << id << " is starting an iteration!");
+          Trace("(#" << id << ": START)");
 
           // ATTEMPT 1
           if (algorithm == Solution::Attempt1)
           {
-            mutex.wait();
+            mutex.Wait();
             count = count + 1;
-            mutex.signal();
+            mutex.Signal();
 
-            if (count == n) turnstile1.signal();
+            if (count == n) turnstile1.Signal();
 
             // First turnstile          
-            turnstile1.wait();
-            turnstile1.signal();
-            AtomicTrace("#" << id << " has entered critical section!");
+            turnstile1.Wait();
+            turnstile1.Signal();
+            Trace("(#" << id << ": CS)");
 
-            mutex.wait();
+            mutex.Wait();
             count = count - 1;
-            mutex.signal();
+            mutex.Signal();
 
-            if (count == 0) turnstile1.wait();
+            if (count == 0) turnstile1.Wait();
           }
           // ATTEMPT 2
           else if (algorithm == Solution::Attempt2)
           {
-            mutex.wait();
+            mutex.Wait();
             count = count + 1;
-            if (count == n) turnstile1.signal();
-            mutex.signal();
+            if (count == n) turnstile1.Signal();
+            mutex.Signal();
 
-            turnstile1.wait();
-            turnstile1.signal();
-            AtomicTrace("#" << id << " has entered critical section!");
+            turnstile1.Wait();
+            turnstile1.Signal();
+            Trace("(#" << id << ": CS)");
 
-            mutex.wait();
+            mutex.Wait();
             count = count - 1;
-            if (count == 0) turnstile1.wait();
-            mutex.signal();
+            if (count == 0) turnstile1.Wait();
+            mutex.Signal();
           }
           // SOLUTION
-          else if (algorithm == Solution::CorrectSolution)
+          else if (algorithm == Solution::Correct)
           {
             // Rendezvous
-            mutex.wait();
+            mutex.Wait();
             count = count + 1;
             if (count == n)
             {
-              turnstile2.wait();
-              turnstile1.signal();
+              turnstile2.Wait();
+              turnstile1.Signal();
             }
-            mutex.signal();
+            mutex.Signal();
 
             // First turnstile          
-            turnstile1.wait();          
-            turnstile1.signal();
+            turnstile1.Wait();          
+            turnstile1.Signal();
 
-            AtomicTrace("#" << id << " has entered critical section!");
+            Trace("(#" << id << ": CS)");
 
-            mutex.wait();
+            mutex.Wait();
             count = count - 1;
             if (count == 0)
             {              
-              turnstile1.wait();
-              turnstile2.signal();
+              turnstile1.Wait();
+              turnstile2.Signal();
             }
-            mutex.signal();
+            mutex.Signal();
             
             // Second turnstile
-            turnstile2.wait();
-            turnstile2.signal();
+            turnstile2.Wait();
+            turnstile2.Signal();
           }
 
           iterations--;
-          AtomicTrace("#" << id << " has crossed the barrier. Iterations left = " << iterations);
+          Trace("(#" << id << ": END)");
         }
       });
     }
@@ -273,8 +291,100 @@ namespace Tests
 
   }
 
+  /// <summary>
+  /// n philosophers sit at a round table with a bowl of food in the middle. There are n chopsticks,
+  /// so that there is exactly 1 chopstick between each of the neighboring philosophers. To be able to eat,
+  /// a philosopher needs both chopsticks that are on his left and right. While a philosopher is eating, the
+  /// two neighboring philosophers cannot eat.
+  /// Problem: Synchronization algorithm that produces no starvation.
+  /// </summary>
   void DiningPhilosophers()
   {
+    enum class Solution { Attempt1, NthIsRightHanded, Tanenbaum };
+    auto solution = Solution::NthIsRightHanded;
+    enum class State { Thinking, Hungry, Eating };
+
+    auto n = 3;
+    std::vector<Semaphore> forkMutex(n);
+    std::vector<std::thread> threads(n);
+
+    for (auto t = 0; t < n; ++t)
+    {
+      threads[t] = std::thread([&]()
+      {
+        auto tid = t;
+
+        // Problem: All n philosophers grab left fork and wait for the right.
+        // Observation: Deadlock occurs when all n philosophers grab the left fork first
+        if (solution == Solution::Attempt1)
+        {
+          // Get left fork
+          forkMutex[tid].Wait();
+          Trace(tid << " has grabbed left fork!");
+          // Get right fork
+          forkMutex[(tid + 1) % n].Wait();
+          Trace(tid << " has grabbed right fork!");
+
+          Trace(tid << " is now eating!");
+
+          // Release right fork
+          forkMutex[(tid + 1) % n].Signal();
+          Trace(tid << " has released right fork!");
+          // Release left fork
+          forkMutex[tid].Signal();
+          Trace(tid << " has released left fork!");
+        }
+        else if (solution == Solution::NthIsRightHanded)
+        {
+          // The nth philosopher is right handed
+          if (tid == n - 1)
+          {
+            // Get right fork
+            forkMutex[(tid + 1) % n].Wait();
+            // Get left fork
+            forkMutex[tid].Wait();
+            Trace(tid << " has grabbed left fork!");
+            Trace(tid << " has grabbed right fork!");
+
+            Trace(tid << " is now eating!");
+
+            // Release left fork
+            forkMutex[tid].Signal();
+            Trace(tid << " has released left fork!");
+            // Release right fork
+            forkMutex[(tid + 1) % n].Signal();
+            Trace(tid << " has released right fork!");
+          }
+          // All other philosophers use code from the previous example
+          else
+          {
+            // Get left fork
+            forkMutex[tid].Wait();
+            Trace(tid << " has grabbed left fork!");
+            // Get right fork
+            forkMutex[(tid + 1) % n].Wait();
+            Trace(tid << " has grabbed right fork!");
+
+            Trace(tid << " is now eating!");
+
+            // Release right fork
+            forkMutex[(tid + 1) % n].Signal();
+            Trace(tid << " has released right fork!");
+            // Release left fork
+            forkMutex[tid].Signal();
+            Trace(tid << " has released left fork!");
+          }
+        }
+        else if (solution == Solution::Tanenbaum)
+        {
+
+        }
+
+      });
+    }
+
+    for (auto i = 0; i < n; ++i)
+      threads[i].join();
 
   }
 
@@ -283,11 +393,205 @@ namespace Tests
 
   }
 
+  /// <summary>
+  /// There are n savages with 1 pot of food and 1 cook. Savages are doing whatever savages do,
+  /// but when hungry they stop by the pot and eat. When the pot becomes empty they notify cook
+  /// who can replenish the food (and go back to sleep).
+  /// Savage will generate an error if attempting to eat from an empty pot, cook will generate
+  /// an error if trying to add food to a pot that is not empty.
+  /// </summary>
   void DiningSavages()
   {
+    auto servings = 2;
+    auto servingsLeft = 0;
+    auto savages = 3;    
+
+    auto timesSavagesWillEat = 6;
+    auto savagesLeftEating = savages;
+
+    auto& mutex = Semaphore();
+    auto& emptyPot = Semaphore(0);
+    auto& fullPot = Semaphore(0);
+
+    Trace("Savages = " << savages << ", Servings on pot = " << servings);
+
+    // Cook thread
+    std::thread cookThread([&]()
+    {
+      while (savagesLeftEating > 0)
+      {
+        emptyPot.Wait();
+        Trace("Cook is now putting " << servings << " servings into pot!");
+        servingsLeft = servings;
+        fullPot.Signal();
+      }
+      Trace("Cook is done serving!");
+    });
+
+    // Savage threads
+    std::vector<std::thread> threads(savages);
+    for (auto t = 0; t < savages; ++t)
+    {
+      threads[t] = std::thread([&]()
+      {
+        auto tid = t;
+
+        for (auto i = 0; i < timesSavagesWillEat; ++i)
+        {
+          mutex.Wait();
+          // Wait on servings
+          if (servingsLeft == 0)
+          {
+            emptyPot.Signal();
+            Trace(tid << " is waiting on serving from pot!");
+            fullPot.Wait();     
+          }
+          // Eat
+          servingsLeft -= 1;
+          Trace(tid << " is getting serving from pot. Servings = " << servingsLeft);
+          mutex.Signal();
+          //Trace(tid << " is eating!");
+        }
+
+        savagesLeftEating--;
+        if (savagesLeftEating == 0)
+          emptyPot.Signal();
+        Trace(tid << " is finished eating!");
+
+
+      });
+    }
+
+
+
+    // Clean up
+    for (auto i = 0; i < threads.size(); ++i)
+      threads[i].join();
+    cookThread.join();
 
   }
 
+  /// <summary>
+  /// Performn random swaps of elements of the array using multiple threads.
+  /// </summary>
+  void ParallelShuffle()
+  {
+    enum class Solution { Attempt1, Attempt2, Attempt3, Correct };
+    auto algorithm = Solution::Correct;
+
+    std::vector<int> a{ 1, 2, 3, 4, 5, 6, 7 };
+    auto shuffles = 100;
+
+    // Number of threads
+    auto n = 3;
+    std::vector<std::thread> threads(n);
+
+    // Attempt 2
+    std::vector<Semaphore> sems(n);
+    for (auto& s : sems)
+      s.Initialize(1);
+
+    // Correct
+    auto& sem = Semaphore(n);
+    auto& mutex = std::mutex();
+
+    Trace("Pre-shuffle array:");
+    PrintArray(a);
+
+    for (auto t = 0; t < n; ++t)
+    {
+      threads[t] = std::thread([&]()
+      {        
+        auto id = t;
+
+        // Data Race: Depending on T1 or T2 first, the result will be different
+        if (algorithm == Solution::Attempt1)
+        {
+          for (auto k = 0; k < shuffles; ++k)
+          {
+            int i = rand() % n;
+            int j = rand() % n;
+
+            auto temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+          }
+        }
+        // Deadlock: Similar to smokers. 
+        else if (algorithm == Solution::Attempt2)
+        {
+          for (auto k = 0; k < shuffles; ++k)
+          {            
+            int i = rand() % n;
+            int j = rand() % n;
+            
+            sems[i].Wait();
+            sems[j].Wait();
+
+            auto temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+
+            sems[j].Signal();
+            sems[i].Signal();
+          }
+        }
+        // Progress: Correct, but inefficient. Onoly one thread can work at a time.
+        else if (algorithm == Solution::Attempt3)
+        {
+          for (auto k = 0; k < shuffles; ++k)
+          {
+            int i = rand() % n;
+            int j = rand() % n;
+
+            sem.Wait();
+            
+            auto temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+
+            sem.Signal();
+          }
+        }
+        else if (algorithm == Solution::Correct)
+        {
+          for (auto k = 0; k < shuffles; ++k)
+          {
+            // Enforce ordering to prevent deadlocks
+            int i = rand() % n;
+            int j = rand() % (n - 1);
+            if (j == i) j++;
+            if (i > j) std::swap(i, j);
+
+            //Trace(t << " is waiting.");
+            mutex.lock();
+            sems[i].Wait();
+            sems[j].Wait();
+            mutex.unlock();
+            //Trace(t << " has signaled.");
+
+            std::swap(a[i], a[j]);
+
+            //auto temp = a[i];
+            //a[i] = a[j];
+            //a[j] = temp;
+            
+            sems[j].Signal();
+            sems[i].Signal();
+          }
+        }
+
+
+      });
+    }
+
+    for (auto i = 0; i < n; ++i)
+      threads[i].join();
+
+    Trace("Post-shuffle array:");
+    PrintArray(a);
+
+  }
 
 
 
@@ -302,7 +606,8 @@ namespace Tests
     TestSuite::Test("ReadersWriters", ReadersWriters),
     TestSuite::Test("DiningPhilosophers", DiningPhilosophers),
     TestSuite::Test("CigaretteSmokers", CigaretteSmokers),
-    TestSuite::Test("DiningSavages", DiningSavages)
+    TestSuite::Test("DiningSavages", DiningSavages),
+    TestSuite::Test("ParallelShuffle", ParallelShuffle)
 
   };
 

@@ -18,10 +18,27 @@ namespace Threading
 
     public:
     /// <summary>
+    /// Default constructor. Does not initialize the semaphore.
+    /// </summary>
+    Semaphore()
+    {
+
+    }
+
+    /// <summary>
     /// Constructs the semaphore
     /// </summary>
     /// <param name="initialValue"></param>
     Semaphore(int initialValue)
+    {
+      this->Initialize(initialValue);
+    }
+
+    /// <summary>
+    /// Initializes the semaphore
+    /// </summary>
+    /// <param name="initialValue"></param>
+    void Initialize(int initialValue)
     {
       sem_init(&Reference, 0, initialValue);
     }

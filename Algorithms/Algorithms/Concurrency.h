@@ -38,14 +38,47 @@ namespace Algorithms
     class Semaphore
     {
       public:
+      /// <summary>
+      /// Default constructor. Sets the default value to 1 (Acting as a mutex).
+      /// </summary>
+      Semaphore();
+      /// <summary>
+      /// Semaphore constructor, which sets the maximum amount of threads.
+      /// </summary>
+      /// <param name="numThreads"></param>
       Semaphore(int numThreads);
-      void wait();
-      void signal();
+      /// <summary>
+      /// Initializes the semaphore with a given value.
+      /// </summary>
+      /// <param name="initialValue"></param>
+      void Initialize(int numThreads);
+      /// <summary>
+      /// Decrements the value of this semaphore by one. 
+      /// If the value is zero, then this will block the thread until
+      /// the value becoems greater than zero.
+      /// </summary>
+      void Wait();
+      /// <summary>
+      /// Increments the value of the semaphore by one.
+      /// </summary>
+      void Signal();
       private:
       int Count;
       std::mutex Mutex;
       std::condition_variable ConditionalVariable;
 
+    };
+
+    class Lightswitch
+    {
+      public:
+      Lightswitch()
+      void Enter();
+      void Leave();
+
+      private:
+      int Count;
+      Semaphore M;
     };
 
 
